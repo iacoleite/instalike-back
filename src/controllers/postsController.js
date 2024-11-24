@@ -1,8 +1,6 @@
-import fs from "fs";
 import { getAllPosts, createNewPost, updatePost }from "../models/postsModel.js";
+import fs from "fs";
 import gerarDescricaoComGemini from "../services/geminiServices.js";
-
-
 
 export async function listPosts(req, res) {
     const posts = await getAllPosts();
@@ -23,7 +21,7 @@ export async function listPosts(req, res) {
   export async function uploadImage(req,res) {
     const newPost = {
       descricao: "",
-      imgURL: req.file.originalname,
+      imgUrl: req.file.originalname,
       alt: ""
     };
 
@@ -38,7 +36,6 @@ export async function listPosts(req, res) {
     }
   }
 
-
   export async function updateNewPost(req,res) {
     const id = req.params.id;
     const urlImg = `http://localhost:3000/${id}.png`
@@ -48,7 +45,7 @@ export async function listPosts(req, res) {
       const descricao = await gerarDescricaoComGemini(imgBuffer);
       
       const post = {
-        imgURL: urlImg,
+        imgUrl: urlImg,
         descricao : descricao,
         alt : req.body.alt
       };

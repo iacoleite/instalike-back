@@ -8,6 +8,7 @@ export default async function dbConnect(connectionString) {
         console.log("Trying to connect to dbCluster...");
         await mongoClient.connect();
         console.log("Connection estabilished");
+        
         return mongoClient;
     } catch (err) {
         console.log("Connection failed!", err);

@@ -22,11 +22,10 @@ const upload = multer({ storage: storage})
 const routes = (app) => {
     app.use(express.json());
     app.use(cors(corsOptions))
-
     app.get("/posts", listPosts);
     app.post("/posts", createPost);
-    app.post("/uploads", upload.single("image"), uploadImage);
-    app.put("/uploads/:id", updateNewPost); 
-}
+    app.post("/upload", upload.single("image"), uploadImage);
+    app.put("/upload/:id", updateNewPost); 
+};
 
 export default routes;

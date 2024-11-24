@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { ObjectId } from "mongodb";
 import dbConnect from "../config/dbConfig.js";
-import gerarDescricaoComGemini from "../services/geminiServices.js";
 
 const conexao = await dbConnect(process.env.CONNECTION_STRING);
 
